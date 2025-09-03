@@ -40,6 +40,7 @@ def pusherProductos():
     )
 
     pusher_client.trigger("ProductosCanal", "ProductosEvent", {"message": "hola"})
+    return make_response(jsonify({}))
 
 @app.route("/")
 def index():
@@ -247,6 +248,7 @@ def eliminarProducto():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
