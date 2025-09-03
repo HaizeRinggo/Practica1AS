@@ -9,7 +9,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import jsonify, make_response
-
+import pusher
 import mysql.connector
 
 import datetime
@@ -247,6 +247,7 @@ def eliminarProducto():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
