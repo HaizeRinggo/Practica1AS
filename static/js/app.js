@@ -93,12 +93,12 @@ app.controller("productosCtrl", function ($scope, $http) {
 
     Pusher.logToConsole = true;
 
-    var pusher = new Pusher('0252090567a1ae88a78a', {
-      cluster: 'us2'
+    var pusher = new Pusher("0252090567a1ae88a78a", {
+      cluster: "us2"
     });
 
-    var channel = pusher.subscribe('ProductosCanal');
-    channel.bind('ProductosEvent', function(data) {
+    var channel = pusher.subscribe("ProductosCanal");
+    channel.bind("ProductosEvent", function(data) {
       alert(JSON.stringify(data));
     });
     
@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
 
