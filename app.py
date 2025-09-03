@@ -32,14 +32,14 @@ def pusherProductos():
     import pusher
     
     pusher_client = pusher.Pusher(
-    app_id='2046014',
-    key='0252090567a1ae88a78a',
-    secret='24129d651e2392e2b0b4',
-    cluster='us2',
+    app_id="2046014",
+    key="0252090567a1ae88a78a",
+    secret="24129d651e2392e2b0b4",
+    cluster="us2",
     ssl=True
     )
 
-    pusher_client.trigger('ProductosCanal', 'ProductosEvent', {'message': 'hola'})
+    pusher_client.trigger("ProductosCanal", "ProductosEvent", {"message": "hola"})
 
 @app.route("/")
 def index():
@@ -247,6 +247,7 @@ def eliminarProducto():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
