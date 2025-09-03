@@ -39,7 +39,7 @@ def pusherProductos():
     ssl=True
     )
 
-    pusher_client.trigger('productosCanal', 'my-event', {'message': 'hello world'})
+    pusher_client.trigger('ProductosCanal', 'ProductosEvent', {'message': 'hola'})
 
 @app.route("/")
 def index():
@@ -247,6 +247,7 @@ def eliminarProducto():
     con.close()
 
     return make_response(jsonify({}))
+
 
 
 
