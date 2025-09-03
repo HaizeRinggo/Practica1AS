@@ -58,6 +58,19 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
     $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {
         $("html").css("overflow-x", "hidden")
 
+        document.addEventListener("DOMContentLoaded", function () {
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
+        
+            var pusher = new Pusher('0252090567a1ae88a78a', {
+              cluster: 'us2'
+            });
+        
+            var channel = pusher.subscribe('ProductosCanal');
+            channel.bind('ProductosEvent', function(data) {
+              alert(JSON.stringify(data));
+            });
+            
         const path = current.$$route.originalPath
 
         if (path.indexOf("splash") == -1) {
@@ -142,5 +155,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
 
