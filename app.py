@@ -27,19 +27,18 @@ con = mysql.connector.connect(
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/pusherProductos")
 def pusherProductos():
     import pusher
     
     pusher_client = pusher.Pusher(
-    app_id="2046014",
-    key="0252090567a1ae88a78a",
-    secret="24129d651e2392e2b0b4",
-    cluster="us2",
-    ssl=True
+      app_id='2046014',
+      key='0252090567a1ae88a78a',
+      secret='24129d651e2392e2b0b4',
+      cluster='us2',
+      ssl=True
     )
-
-    pusher_client.trigger("ProductosCanal", "ProductosEvent", {"message": "hola"})
+ 
+    pusher_client.trigger("canalProductos", "eventoProductos", {"message": "Hola Mundo!"})
     return make_response(jsonify({}))
 
 @app.route("/")
@@ -100,7 +99,7 @@ def tbodyProductos():
     return render_template("tbodyProductos.html", productos=registros)
 
 @app.route("/productos/ingredientes/<int:id>")
-def productos2(id):
+def productosIngredientes(id):
     if not con.is_connected():
         con.reconnect()
 
@@ -206,6 +205,8 @@ def guardarProducto():
     con.commit()
     con.close()
 
+    pusherProductos()
+    
     return make_response(jsonify({}))
 
 @app.route("/producto/<int:id>")
@@ -248,12 +249,3 @@ def eliminarProducto():
     con.close()
 
     return make_response(jsonify({}))
-
-
-
-
-
-
-
-
-
